@@ -1,4 +1,6 @@
-@extends('/_partials/head')
+@extends('template.users')
+@section('title', 'Usuário - Detalhes')
+@section('body')
 
 <div class="container mt-5">
     <div class="row">
@@ -32,3 +34,4 @@
         </div>
     </div>
 </div>
+@endsection
