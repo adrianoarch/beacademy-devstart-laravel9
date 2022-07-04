@@ -6,6 +6,8 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-center">Listagem de Usuários</h1>
+            <hr>
+            <a class="btn btn-primary mb-2" href="{{ route('users.create') }}">Criar Usuário</a>
             <table class="table table-secondary table-striped table-hover">
                 <thead>
                     <tr>

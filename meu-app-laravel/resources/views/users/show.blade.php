@@ -1,5 +1,5 @@
 @extends('template.users')
-@section('title', 'Usuário - Detalhes')
+@section('title', $title)
 @section('body')
 
 <div class="container mt-5">
