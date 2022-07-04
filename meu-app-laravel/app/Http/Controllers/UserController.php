@@ -64,9 +64,14 @@ class UserController extends Controller
 
         $user->update($data);
         return redirect()->route('users.index');
+    }
 
-        //$2y$10$0QeUh8TPYox5d4UhCEZ/fur7sufKs/y0dcrs1EnUSWY.RM2u.DPlq
-        //$2y$10$1ckn3mWtfRtQ1wXy5DDPI.T.U9Iw6FfewiwGV9Vj71cbQzaTffGf6
+    public function destroy($id)
+    {
+        if(!$user = $this->model->find($id)) 
+            return redirect()->route('users.index');
+        $user->delete();
+        return redirect()->route('users.index');
     }
 
 }
