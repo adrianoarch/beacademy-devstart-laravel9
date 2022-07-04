@@ -47,4 +47,26 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
+    public function edit($id)
+    {
+        if(!$user = $this->model->find($id)) 
+            return redirect()->route('users.index');
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        if(!$user = $this->model->find($id)) 
+            return redirect()->route('users.index');
+        $data = $request->only('name', 'email');
+        if($request->has('password'))
+            $data['password'] = bcrypt($request->password);
+
+        $user->update($data);
+        return redirect()->route('users.index');
+
+        //$2y$10$0QeUh8TPYox5d4UhCEZ/fur7sufKs/y0dcrs1EnUSWY.RM2u.DPlq
+        //$2y$10$1ckn3mWtfRtQ1wXy5DDPI.T.U9Iw6FfewiwGV9Vj71cbQzaTffGf6
+    }
+
 }

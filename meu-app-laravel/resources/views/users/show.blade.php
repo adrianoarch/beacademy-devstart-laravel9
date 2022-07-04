@@ -24,7 +24,7 @@
                     <input type="text" name="updated_at" id="updated_at" class="form-control" value="{{$user->updated_at}}">
                 </div>
                 <div class="form-group mb-3">
-                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                    <a href="{{ route('users.edit', $user->id) }}" type="submit" class="btn btn-primary">Editar</a>
                     <button type="submit" class="btn btn-danger">Excluir</button>
                 </div>
                 <div class="form-group mb-3">
