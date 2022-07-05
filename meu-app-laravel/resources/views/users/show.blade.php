@@ -9,19 +9,19 @@
             <form action="" method="post">
                 <div class="form-group mb-3">
                     <label for="name">Nome</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{$user->name}}">
+                    <input type="text" name="name" id="name" class="form-control" readonly value="{{$user->name}}">
                 </div>
                 <div class="form-group mb-3">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}">
+                    <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" readonly>
                 </div>
                 <div class="form-group mb-3">
                     <label for="created_at">Data de Cadastro</label>
-                    <input type="text" name="created_at" id="created_at" class="form-control" value="{{$user->created_at}}">
+                    <input type="text" name="created_at" id="created_at" class="form-control" value="{{$user->created_at}}" readonly>
                 </div>
                 <div class="form-group mb-3">
                     <label for="updated_at">Data de Atualização</label>
-                    <input type="text" name="updated_at" id="updated_at" class="form-control" value="{{$user->updated_at}}">
+                    <input type="text" name="updated_at" id="updated_at" class="form-control" value="{{$user->updated_at}}" readonly>
                 </div>
                 <div class="form-group mb-3 justify-content-center">
                     <a href="{{ route('users.edit', $user->id) }}" type="submit" class="btn btn-primary"><span class="material-symbols-outlined align-middle me-1 fs-5" style="wght: 48">

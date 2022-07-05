@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use GuzzleHttp\Promise\Create;
+use App\Http\Requests\StoreUpdateUserFormRequest;
 
 class UserController extends Controller
 {
@@ -39,7 +40,7 @@ class UserController extends Controller
         // dd('Create');
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdateUserFormRequest $request)
     {
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
@@ -54,7 +55,7 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreUpdateUserFormRequest $request, $id)
     {
         if(!$user = $this->model->find($id)) 
             return redirect()->route('users.index');

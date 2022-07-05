@@ -4,6 +4,15 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-md-8">
                 <h1 class="text-center">Editar Usuário</h1>
+                
+                @if(isset($errors) && count($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                </div>
+                @endif
+                
                 <form action="{{ route('users.update', $user->id) }}" method="POST">
                     @method('PUT')
                     @csrf
