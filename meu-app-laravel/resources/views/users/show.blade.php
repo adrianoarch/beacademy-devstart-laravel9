@@ -5,8 +5,17 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
-            <h1>Detalhes do Usuário {{$user->name}}</h1>
+            <h1 class="mb-3">Detalhes do usuário {{$user->name}}</h1>
             <form action="" method="post">
+                <div class="form-group">
+                    <figure class="pt-3 text-center">
+                        @if($user->image)
+                        <img src="{{ asset('storage/'.$user->image) }}" alt="{{ $user->name }}" class="img-fluid rounded-circle" style="max-width: 80px;">
+                        @else
+                        <img src="{{ asset('storage/profiles/avatar.jpg') }}" alt="{{ $user->name }}" class="img-fluid rounded-circle" style="max-width: 80px">
+                        @endif
+                    </figure>
+                </div>
                 <div class="form-group mb-3">
                     <label for="name">Nome</label>
                     <input type="text" name="name" id="name" class="form-control" readonly value="{{$user->name}}">
