@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateUserFormRequest;
+use App\Models\Team;
 use App\Models\User;
 use GuzzleHttp\Promise\Create;
 
@@ -16,9 +17,12 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::paginate(5);
+        // $users = User::paginate(5);
 
-        return view('users.index', compact('users'));
+        $teams = Team::with('users')->get();
+
+        return $teams;
+        // return view('users.index', compact('users'));
     }
 
     public function show($id)
@@ -28,9 +32,12 @@ class UserController extends Controller
             return redirect()->route('users.index');
         }
 
+        $user->load('teams');
+
         $title = "Usuário #{$user->name}";
 
-        return view('users.show', compact('user', 'title'));
+        return $user;
+        // return view('users.show', compact('user', 'title'));
     }
 
     public function create()
