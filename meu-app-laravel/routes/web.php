@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     UserController,
-    ViaCepController
+    PostController
     };
 
 
@@ -14,8 +14,6 @@ Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edi
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
-//VIACEP WEB SERVICE
-Route::get('/viacep', [ViaCepController::class, 'index'])->name('viacep.index');
-Route::post('/viacep', [ViaCepController::class, 'index'])->name('viacep.index.post');
-Route::get('/viacep/{cep}', [ViaCepController::class, 'show'])->name('viacep.show');
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
