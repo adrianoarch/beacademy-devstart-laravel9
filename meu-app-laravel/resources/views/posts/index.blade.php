@@ -8,11 +8,11 @@
         <div class="col-md-12">
             <h1 class="text-center">Listagem de Posts</h1>
             <hr>
-            <a class="btn btn-outline-primary mb-2" href="{{ route('users.create') }}">Criar Usuário</a>
             <table class="table table-hover">
                 <thead class="table-dark">
                     <tr class="text-center align-middle">
                         <th>ID</th>
+                        <th>Usuário</th>
                         <th>Título</th>
                         <th>Postagem</th>
                         <th>Data de Cadastro</th>
@@ -22,6 +22,7 @@
                     @foreach($posts as $post)
                         <tr class="text-center align-middle">
                             <td>{{ $post->id }}</td>
+                            <td>{{ $post->user->name }}</td>
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->post }}</td>
                             <td class="text-center">{{ date('d/m/Y - H:i', strtotime($post->created_at)) }}</td>

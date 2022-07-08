@@ -16,6 +16,7 @@
                         <th>Foto</th>
                         <th>Nome</th>
                         <th>Email</th>
+                        <th>Postagens</th>
                         <th>Data de Cadastro</th>
                         <th>Ações</th>
                     </tr>
@@ -32,6 +33,9 @@
                             @endif
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>
+                            <a class="btn btn-outline-primary" href="{{ route('posts.show', $user->id) }}">{{ $user->posts->count() }}</a>
+                        </td>
                         <td class="text-center">{{ date('d/m/Y - H:i', strtotime($user->created_at)) }}</td>
                         <td class="text-center">
                             <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary">Ver</a>
