@@ -45,6 +45,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getUsers(string $search = null)
+    {
+        if ($search) {
+            return $this->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->paginate(5);
+        }
+
+        return $this->paginate(5);
+        
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);

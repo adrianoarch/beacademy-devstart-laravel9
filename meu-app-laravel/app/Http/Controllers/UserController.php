@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUpdateUserFormRequest;
 use App\Models\Team;
 use App\Models\User;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -15,14 +16,15 @@ class UserController extends Controller
         $this->model = $user;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        // $users = User::paginate(5);
+        $users = $this->model->getUsers($request
+        ->get('search'));
 
-        $teams = Team::with('users')->get();
+        // $teams = Team::with('users')->get();
 
-        return $teams;
-        // return view('users.index', compact('users'));
+        // return $teams;
+        return view('users.index', compact('users'));
     }
 
     public function show($id)
@@ -32,12 +34,12 @@ class UserController extends Controller
             return redirect()->route('users.index');
         }
 
-        $user->load('teams');
+        // $user->load('teams');
 
         $title = "Usuário #{$user->name}";
 
-        return $user;
-        // return view('users.show', compact('user', 'title'));
+        // return $user;
+        return view('users.show', compact('user', 'title'));
     }
 
     public function create()

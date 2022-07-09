@@ -8,7 +8,24 @@
         <div class="col-md-12">
             <h1 class="text-center">Listagem de Usuários</h1>
             <hr>
-            <a class="btn btn-outline-primary mb-2" href="{{ route('users.create') }}">Criar Usuário</a>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="col-md-4">
+                    <a href="{{ route('users.create') }}" class="btn btn-primary">Cadastrar</a>
+                </div>
+                <div class="col-md-4">
+                    <form action="{{ route('users.index') }}" method="get">
+                        @csrf
+                        <div class="input-group">
+                            <input type="search" class="form-control" name="search" placeholder="Pesquisar...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Pesquisar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+
             <table class="table table-hover">
                 <thead class="table-dark">
                     <tr class="text-center align-middle">
