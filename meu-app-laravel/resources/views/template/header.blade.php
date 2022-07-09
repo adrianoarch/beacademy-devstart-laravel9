@@ -16,10 +16,26 @@
             <a class="nav-link" href="{{ route('posts.index')}}">Posts</a>
           </li>
         </ul>
-        {{-- <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> --}}
+      </div>
+      <div class="">
+        <ul class="navbar-nav ml-auto">
+          @if(Auth::user())
+            <li class="nav-item">
+              <a class="nav-link" href="{{ Auth::user()->name }}">{{ Auth::user()->name }}</a>
+            </li>
+            <li class="nav-item mt-1">
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button class="btn btn-sm btn-outline-danger">Logout</button>
+            </li>
+          @else
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">Login</a>
+            </li>
+            <li>
+              <a class="nav-link" href="{{ route('register') }}">Cadastrar</a>
+            </li>
+          @endif
       </div>
     </div>
 </nav>
