@@ -37,6 +37,11 @@
                         <input type="file" name="image" id="image" class="form-control">
                     </div>
 
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" name="admin" id="admin" value="1" {{ $user->admin ? 'checked' : '' }}>
+                        <label class="form-label" for="admin">Administrador</label>
+                    </div>
+
                     <div class="form-group mb-3">
                         <button type="submit" class="btn btn-primary">Atualizar</button>
                     </div>

@@ -17,14 +17,14 @@
           </li>
         </ul>
       </div>
-      <div class="">
+      <div class="me-2">
         <ul class="navbar-nav ml-auto">
           @if(Auth::user())
             <li class="nav-item">
               <a class="nav-link" href="{{ Auth::user()->name }}">{{ Auth::user()->name }}</a>
             </li>
             @if(Auth::user()->is_admin == 1)
-              <li class="nav-item">
+              <li class="nav-item me-2">
                 <a class="nav-link" href="{{ route('admin.index') }}">Admin</a>
               </li>
             @endif

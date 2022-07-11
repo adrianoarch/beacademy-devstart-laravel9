@@ -60,7 +60,7 @@ class UserController extends Controller
 
         $this->model->create($data);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'Usuário criado com sucesso!');
     }
 
     public function edit($id)
@@ -83,8 +83,15 @@ class UserController extends Controller
             $data['password'] = bcrypt($request->password);
         }
 
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')
+                ->store('profiles', 'public');
+        }
+
+        $data['is_admin'] = $request->admin;
+
         $user->update($data);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'Usuário atualizado com sucesso!');
     }
 
     public function destroy($id)
@@ -94,7 +101,8 @@ class UserController extends Controller
         }
 
         $user->delete();
-        return redirect()->route('users.index');
+        // return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('error', 'Usuário deletado com sucesso!');
     }
 
     public function admin()
