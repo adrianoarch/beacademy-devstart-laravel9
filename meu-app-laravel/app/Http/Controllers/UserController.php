@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\UserControllerException;
 use App\Http\Requests\StoreUpdateUserFormRequest;
 use App\Models\Team;
 use App\Models\User;
@@ -29,17 +30,24 @@ class UserController extends Controller
 
     public function show($id)
     {
-        // $user = User::findOrFail($id);
-        if (!$user = User::find($id)) {
-            return redirect()->route('users.index');
-        }
+        $user = User::findOrFail($id);
+        // if (!$user = User::findOrFail($id)) {
+        //     return redirect()->route('users.index');
+        // }
 
         // $user->load('teams');
 
         $title = "Usuário #{$user->name}";
 
+        if($user) {
+            return view('users.show', compact('user', 'title'));
+        }
+        else {
+            throw new UserControllerException("Usuário não encontrado");
+        }
+
         // return $user;
-        return view('users.show', compact('user', 'title'));
+        // return view('users.show', compact('user', 'title'));
     }
 
     public function create()
